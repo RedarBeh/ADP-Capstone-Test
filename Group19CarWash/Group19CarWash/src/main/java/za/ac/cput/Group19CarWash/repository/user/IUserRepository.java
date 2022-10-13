@@ -1,3 +1,10 @@
+/*
+Keallan Saunders 219169357
+ADP3 ASSIGNMENT1
+DD: Oct 2022
+IUserRepository.java
+**************** DO NOT TOUCH ********************
+ */
 package za.ac.cput.Group19CarWash.repository.user;
 
 import org.springframework.data.jpa.repository.Query;

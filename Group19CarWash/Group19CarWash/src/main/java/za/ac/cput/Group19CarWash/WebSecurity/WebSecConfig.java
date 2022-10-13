@@ -1,3 +1,10 @@
+/*
+Keallan Saunders 219169357
+ADP3 ASSIGNMENT1
+DD: Oct 2022
+WebSecConfig.java
+**************** DO NOT TOUCH ********************
+ */
 package za.ac.cput.Group19CarWash.WebSecurity;
 
 import org.springframework.context.annotation.Bean;
