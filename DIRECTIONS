@@ -1,0 +1,8 @@
+Hi Guys its Keallan here,
+
+I have created a springboot application, please create and add the necessary entities that you are required to do.
+Please add your front end to the application thats necessary for your controllers and services.
+I have already implemented the basic authentication(Security) in the application.
+I have also implemented Thymeleaf dependaencies as our front end will be in html.
+I have created a database and the connection to the database.
+Please copy the database add to your xampp directory.
