@@ -1,3 +1,10 @@
+/*
+Keallan Saunders 219169357
+ADP3 ASSIGNMENT1
+DD: Oct 2022
+UserDetailServiceImpl.java
+**************** DO NOT TOUCH ********************
+ */
 package za.ac.cput.Group19CarWash.services;
 
 import org.springframework.beans.factory.annotation.Autowired;

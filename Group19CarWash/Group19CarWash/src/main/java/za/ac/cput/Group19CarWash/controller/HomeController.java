@@ -1,4 +1,11 @@
-package za.ac.cput.Group19CarWash.controller;
+
+/*
+Keallan Saunders 219169357
+ADP3 ASSIGNMENT1
+DD: Oct 2022
+HomeController.java
+**************** DO NOT TOUCH ********************
+ */package za.ac.cput.Group19CarWash.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
