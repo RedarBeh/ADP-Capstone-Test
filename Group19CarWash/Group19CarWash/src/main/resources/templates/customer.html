@@ -1,9 +1,3 @@
-<!--
-Keallan Saunders 219169357
-ADP3 ASSIGNMENT1
-DD: Oct 2022
-bookings.html
-**************** DO NOT TOUCH ********************-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,39 +9,48 @@ bookings.html
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     body, h1,h2,h3,h4,h5,h6 {
-      font-family: "Montserrat", sans-serif
+        font-family: "Montserrat", sans-serif
     }
+
     .w3-row-padding img {
-       margin-bottom: 12px;
+        margin-bottom: 12px
     }
+
     /* Set the width of the sidebar to 120px */
     .w3-sidebar {
-      width: 120px;
-      background: #222;
+        width: 120px;
+        background: #222;
     }
+
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {
-      margin-left: 120px;
-      text-decoration: none;
+        margin-left: 120px;
+
     }
 
-    #userpos {
-        text-align: right;
+    #gobtn a:link {
+        background-color: #4CAF50;
+        float: right;
+        padding: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+        display: inline-block;
+        margin-bottom: 30px;
     }
 
-    #footer{
+    #footer {
         margin-left: 40%;
-        position: fixed;
         left: 0;
         bottom: 0;
-        align: center;
+        position: fixed;
+        text-align: center;
     }
 
     /* Remove margins from "page content" on small screens */
     @media only screen and (max-width: 600px) {
       #main {margin-left: 0}
     }
-
 </style>
 </head>
 <body class="w3-black">
@@ -55,7 +58,7 @@ bookings.html
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <!-- Avatar image in top left corner -->
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
@@ -63,8 +66,8 @@ bookings.html
         <i class="fa fa-address-book w3-xxlarge"></i>
         <p>BOOKINGS</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
-        <i class="fa fa-user-circle w3-xxlarge"></i>
+    <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/customer}">
+        <i class="fa fa-user-circle  w3-xxlarge"></i>
         <p>CUSTOMERS</p>
     </a>
     <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
@@ -84,7 +87,7 @@ bookings.html
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-        <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+        <a class="w3-bar-item w3-button" style="width:25% " th:href="@{/}">HOME</a>
         <a class="w3-bar-item w3-button" style="width:25% !important" th:href="@{/bookings}">BOOKINGS</a>
         <!--a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
         <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a-->
@@ -93,103 +96,60 @@ bookings.html
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
-    <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-        <h1 id="userpos" ><i class="fa fa-user w3-large">User:<span> [[${#httpServletRequest.remoteUser}]]</span></i></h1>
-        <h1 class="w3-jumbo">Welcome</h1>
+        <div>
+        <h2>Manage Customers</h2>
+        </div>
+        <div id="gobtn">
+            <a href="newcus"> Add Customer</a>
+        </div>
     </header>
 
-
+    <main>
+        <div align="center">
+            <table border="1" cellpadding="10" border-color="white">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CustomerId</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Address</th>
+                        <th>Phone number</th>
+                        <th>Car Registration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="customer : ${customerList}">
+                        <td th:text="${customer.id}">ID</td>
+                        <td th:text="${customer.cusId}">CustomerId</td>
+                        <td th:text="${customer.firstname}">Firstname</td>
+                        <td th:text="${customer.lastname}" >Lastname</td>
+                        <td th:text="${customer.address}">Address</td>
+                        <td th:text="${customer.cellnr}">Phone number</td>
+                        <td th:text="${customer.carplate}">Car Registration</td>
+                        <td>
+                            <a th:href="@{'/editcus/'+${customer.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deletecus/'+${customer.id}}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
     <!-- Footer -->
-    <footer id="footer" class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
-        <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
-        <!-- End footer -->
-    </footer>
+    <div id="footer">
+        <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
+            <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
+            <!-- End footer -->
+        </footer>
+    </div>
 
     <!-- END PAGE CONTENT -->
 </div>
 
 </body>
 </html>
-
-<!--DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-    <style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-image: url(../../img_girl.jpg);
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
-<div class="topnav">
-    <a class="active" th:href="@{/index}">Home</a>
-    <a th:href="@{/bookings}">Manage Bookings</a>
-
-</div>
-<div>
-    <form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form>
-    <style>
-        form{
-        text-align: justify;
-        color: Black;
-        }
-</style>
-</div>
-<div class="container-fluid text-center" align="center">
-    <h1>Welcome Back [[${#httpServletRequest.remoteUser}]]</h1>
-    <a class="h2" th:href="@{/bookings}">Manage Customer</a>
-</div>
-<style>
-.footer {
-position: fixed;
-left: 0px;
-bottom: 0px;
-right: 0px;
-width: 100%;
-height: 18%;
-background-color: #333;
-color: white;
-text-align: center;
-}
-h4{
-        text-align: center;
-        color: white;
-        }
-</style>
-<div class="footer">
-    <h4> @Copyright CapStone 2022 All Right Reserved.</h4>
-</div>
-</body>
-</html-->
