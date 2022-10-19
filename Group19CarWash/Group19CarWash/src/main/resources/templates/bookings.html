@@ -61,35 +61,44 @@ bookings.html
 <body class="w3-black">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
-<div>
-    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-        <!-- Avatar image in top left corner -->
-        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
-            <i class="fa fa-home w3-xxlarge"></i>
-            <p>HOME</p>
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>HOME</p>
+    </a>
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/allbookings}">
+        <i class="fa fa-address-book w3-xxlarge"></i>
+        <p>QUEUE</p>
+    </a>
+    <button class="dropdown-btn w3-bar-item w3-button w3-padding-large w3-hover-black w3-hover-black" >
+        <i class="fa fa-user-circle w3-xxlarge"></i>
+        MANAGE<i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+            <p>MANAGE CUSTOMERS</p>
         </a>
         <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/bookings}">
-            <i class="fa fa-address-book w3-xxlarge"></i>
-            <p>BOOKINGS</p>
+            <p>MANAGE BOOKINGS</p>
         </a>
         <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
-            <i class="fa fa-user-circle w3-xxlarge"></i>
-            <p>CUSTOMERS</p>
+            <p>MANAGE SERVICES</p>
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-sign-out w3-xxlarge"></i>
-            <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
-        </a>
-        <!--a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-eye w3-xxlarge"></i>
-            <p>PHOTOS</p>
-        </a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-envelope w3-xxlarge"></i>
-            <p>CONTACT</p>
-        </a-->
-    </nav>
-</div>
+    </div>
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-sign-out w3-xxlarge"></i>
+        <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
+    </a>
+    <!--a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-eye w3-xxlarge"></i>
+        <p>PHOTOS</p>
+    </a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CONTACT</p>
+    </a-->
+</nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -155,6 +164,24 @@ bookings.html
 
     <!-- END PAGE CONTENT -->
 </div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
 
 </body>
 </html>

@@ -14,15 +14,38 @@ bookings.html
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+<style>
+    body, h1,h2,h3,h4,h5,h6 {
+      font-family: "Montserrat", sans-serif
+    }
+
+    .w3-row-padding img {
+       margin-bottom: 12px
+    }
+
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {
+      width: 120px;background: #222;
+    }
+
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {
+      margin-left: 120px;
+    }
+
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+      #main {margin-left: 0}
+    }
+
+    #footer{
+        margin-left: 40%;
+
+        left: 0;
+        bottom: 0;
+        align: center;
+    }
+
 </style>
 </head>
 <body class="w3-black">
@@ -30,21 +53,32 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <!-- Avatar image in top left corner -->
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/bookings}">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>BOOKINGS</p>
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/allbookings}">
+        <i class="fa fa-address-book w3-xxlarge"></i>
+        <p>QUEUE</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>ADD BOOKINGS</p>
-    </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:action="@{/logout}">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p >LOGOUT</p>
+    <button class="dropdown-btn w3-bar-item w3-button w3-padding-large w3-hover-black w3-hover-black" >
+        <i class="fa fa-user-circle w3-xxlarge"></i>
+        MANAGE<i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+            <p>MANAGE CUSTOMERS</p>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/bookings}">
+            <p>MANAGE BOOKINGS</p>
+        </a>
+        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+            <p>MANAGE SERVICES</p>
+        </a>
+    </div>
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-sign-out w3-xxlarge"></i>
+        <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
     </a>
     <!--a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-eye w3-xxlarge"></i>
@@ -129,6 +163,24 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 <!-- END PAGE CONTENT -->
 </div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
 
 </body>
 </html>
