@@ -40,7 +40,7 @@ bookings.html
 
     #footer{
         margin-left: 40%;
-        position: fixed;
+
         left: 0;
         bottom: 0;
         align: center;
@@ -53,18 +53,29 @@ bookings.html
   <!-- Icon Bar (Sidebar - hidden on small screens) -->
   <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <!-- Avatar image in top left corner -->
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
       <i class="fa fa-home w3-xxlarge"></i>
       <p>HOME</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/bookings}">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/allbookings}">
       <i class="fa fa-address-book w3-xxlarge"></i>
-      <p>BOOKINGS</p>
+      <p>QUEUE</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+    <button class="dropdown-btn w3-bar-item w3-button w3-padding-large w3-hover-black w3-hover-black" >
       <i class="fa fa-user-circle w3-xxlarge"></i>
-      <p>CUSTOMERS</p>
-    </a>
+      MANAGE<i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+        <p>MANAGE CUSTOMERS</p>
+      </a>
+      <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/bookings}">
+        <p>MANAGE BOOKINGS</p>
+      </a>
+      <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
+        <p>MANAGE SERVICES</p>
+      </a>
+    </div>
     <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
       <i class="fa fa-sign-out w3-xxlarge"></i>
       <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
@@ -130,7 +141,7 @@ bookings.html
             <td><input type="text" th:field="*{customerId}"/></td>
           </tr>
           <tr>
-            <td colspan="2"><button type="submit" align="center">Add</button></td>
+            <td colspan="2"><button type="submit" align="center">Next</button></td>
           </tr>
         </table>
 
@@ -147,6 +158,24 @@ bookings.html
 
   <!-- END PAGE CONTENT -->
 </div>
+
+  <script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
 
 </body>
 </html>
