@@ -13,10 +13,10 @@ import za.ac.cput.Group19CarWash.domain.Customer;
 
 import java.util.Optional;
 
-public interface ICustomerRepository extends JpaRepository<Customer, String> {
+public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
-    void deleteCustomerById(Long cusId);
+    void deleteCustomerById(Long Id);
 
-    Optional<Customer> findCustomerById(Long cusId);
+    Optional<Customer> findCustomerById(Long Id);
 
 }

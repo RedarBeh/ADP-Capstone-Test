@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import za.ac.cput.Group19CarWash.domain.Bookings;
+import za.ac.cput.Group19CarWash.domain.Customer;
 import za.ac.cput.Group19CarWash.services.BookingService;
+import za.ac.cput.Group19CarWash.services.CustomerService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -47,7 +49,7 @@ public class BookingNavController {
     public String saveBooking(@ModelAttribute("bookings") Bookings bookings)
     {bookingService.addBooking(bookings);
 
-        return "redirect:/bookings";
+        return "redirect:/newcus";
     }
 
     @RequestMapping(value= "/edit/{id}")
