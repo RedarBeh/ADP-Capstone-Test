@@ -11,7 +11,9 @@ public class Services implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long servicesId;
+    private Long id;
+    @Column
+    private String servicesId;
     @Column
     private String servicesPkg;
     @Column
@@ -27,6 +29,7 @@ public class Services implements Serializable {
 
     public Services(){}
     public Services(Builder builder) {
+        this.id = builder.id;
         this.servicesId = builder.servicesId;
         this.servicesPkg = builder.servicesPkg;
         this.washTypeId = builder.washTypeId;
@@ -36,72 +39,63 @@ public class Services implements Serializable {
         this.totalAmount = builder.totalAmount;
     }
 
-    public Long getServicesId() {
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getServicesId() {
         return servicesId;
     }
 
-    public Services setServicesId(Long serviceId) {
-        this.servicesId = serviceId;
-        return this;
-    }
+    public void setServicesId(String servicesId) {this.servicesId = servicesId;}
 
     public String getServicesPkg() {
         return servicesPkg;
     }
 
-    public Services setServicesPkg(String servicePkg) {
-        this.servicesPkg = servicePkg;
-        return this;
+    public void setServicesPkg(String servicesPkg) {
+        this.servicesPkg = servicesPkg;
     }
 
     public String getWashTypeId() {
         return washTypeId;
     }
 
-    public Services setWashTypeId(String washTypeId) {
-        this.washTypeId = washTypeId;
-        return this;
-    }
+    public void setWashTypeId(String washTypeId) {this.washTypeId = washTypeId;}
 
     public String getUpholsteryId() {
         return upholsteryId;
     }
 
-    public Services setUpholsteryId(String upholsteryId) {
-        this.upholsteryId = upholsteryId;
-        return this;
-    }
+    public void setUpholsteryId(String upholsteryId) {this.upholsteryId = upholsteryId;}
 
     public String getCustomerId() {
         return customerId;
     }
 
-    public Services setCustomerId(String customerId) {
-        this.customerId = customerId;
-        return this;
-    }
+    public void setCustomerId(String customerId) {this.customerId = customerId;}
 
     public String getCleanerId() {
         return cleanerId;
     }
 
-    public Services setCleanerId(String cleanerId) {
-        this.cleanerId = cleanerId;
-        return this;
-    }
+    public void setCleanerId(String cleanerId) {this.cleanerId = cleanerId;}
 
     public String getTotalAmount() {
         return totalAmount;
     }
 
-    public Services setTotalAmount(String totalAmount) {
-        this.totalAmount = totalAmount;
-        return this;
-    }
+    public void setTotalAmount(String totalAmount) {this.totalAmount = totalAmount;}
 
     @Override
     public String toString() {
         return "Services{" +
+                "Id=" + id +
                 "serviceId=" + servicesId +
                 ", servicePkg='" + servicesPkg + '\'' +
                 ", washTypeId='" + washTypeId + '\'' +
@@ -113,7 +107,8 @@ public class Services implements Serializable {
     }
 
     public static class Builder{
-        private Long servicesId;
+        private Long id;
+        private String servicesId;
         private String servicesPkg;
         private String washTypeId;
         private String upholsteryId;
@@ -121,42 +116,47 @@ public class Services implements Serializable {
         private String cleanerId;
         private String totalAmount;
 
-        public Builder setservicesId(Long servicesId){
+        public Builder setId(Long Id){
+            this.id = Id;
+            return this;
+        }
+        public Builder setServicesId(String servicesId){
             this.servicesId = servicesId;
             return this;
         }
-        public Builder setservicesPkg(String servicesPkg){
+        public Builder setServicesPkg(String servicesPkg){
             this.servicesPkg = servicesPkg;
             return this;
         }
-        public Builder setwashTypeId(String washTypeId){
+        public Builder setWashTypeId(String washTypeId){
             this.washTypeId = washTypeId;
             return this;
         }
-        public Builder setupholsteryId(String upholsteryId){
+        public Builder setUpholsteryId(String upholsteryId){
             this.upholsteryId = upholsteryId;
             return this;
         }
-        public Builder setcustomerId(String customerId){
+        public Builder setCustomerId(String customerId){
             this.customerId = customerId;
             return this;
         }
-        public Builder setcleanerId(String cleanerId){
+        public Builder setCleanerId(String cleanerId){
             this.cleanerId = cleanerId;
             return this;
         }
-        public Builder settotalAmount(String totalAmount){
+        public Builder setTotalAmount(String totalAmount){
             this.totalAmount = totalAmount;
             return this;
         }
         public Builder copy(Services services){
-            this.servicesId = servicesId;
-            this.servicesPkg = servicesPkg;
-            this.washTypeId = washTypeId;
-            this.upholsteryId = upholsteryId;
-            this.customerId = customerId;
-            this.cleanerId = cleanerId;
-            this.totalAmount = totalAmount;
+            this.id = services.id;
+            this.servicesId = services.servicesId;
+            this.servicesPkg = services.servicesPkg;
+            this.washTypeId = services.washTypeId;
+            this.upholsteryId = services.upholsteryId;
+            this.customerId = services.customerId;
+            this.cleanerId = services.cleanerId;
+            this.totalAmount = services.totalAmount;
             return this;
         }
         public Services build(){return new Services(this);}

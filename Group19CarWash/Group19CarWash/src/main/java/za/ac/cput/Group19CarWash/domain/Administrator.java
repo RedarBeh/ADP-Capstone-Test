@@ -11,7 +11,9 @@ public class Administrator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
-    private Long adminId;
+    private Long id;
+    @Column
+    private String adminId;
     @Column
     private String adminFname;
     @Column
@@ -21,17 +23,26 @@ public class Administrator implements Serializable {
 
     public Administrator() {}
     public Administrator(Builder builder) {
+        this.id = builder.id;
         this.adminId = builder.adminId;
         this.adminFname = builder.adminFname;
         this.adminSname = builder.adminSname;
         this.bookingId = builder.bookingId;
     }
 
-    public Long getAdminId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(Long adminId) {
+    public void setAdminId(String adminId) {
         this.adminId = adminId;
     }
 
@@ -62,6 +73,7 @@ public class Administrator implements Serializable {
     @Override
     public String toString() {
         return "Administrator{" +
+                "Id=" + id +
                 "adminId='" + adminId + '\'' +
                 ", adminFname='" + adminFname + '\'' +
                 ", adminSname='" + adminSname + '\'' +
@@ -70,12 +82,17 @@ public class Administrator implements Serializable {
     }
 
     public static class Builder{
-        private Long adminId;
+        private Long id;
+        private String adminId;
         private String adminFname;
         private String adminSname;
         private String bookingId;
 
-        public Builder setAdminId(Long adminId){
+        public Builder setId(Long Id){
+            this.id = Id;
+            return this;
+        }
+        public Builder setAdminId(String adminId){
             this.adminId = adminId;
             return this;
         }
@@ -92,6 +109,7 @@ public class Administrator implements Serializable {
             return this;
         }
         public Builder copy(Administrator administrator){
+            this.id = administrator.id;
             this.adminId = administrator.adminId;
             this.adminFname = administrator.adminFname;
             this.adminSname = administrator.adminSname;
