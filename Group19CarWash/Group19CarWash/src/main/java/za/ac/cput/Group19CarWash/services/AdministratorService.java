@@ -16,7 +16,7 @@ public class AdministratorService {
     public AdministratorService(IAdministratorRepository iAdministratorRepository){this.iAdministratorRepository= iAdministratorRepository;}
 
     public Administrator addAdministrator(Administrator administrator){
-        administrator.setAdminId(Long.valueOf(UUID.randomUUID().toString()));
+        administrator.setAdminId(UUID.randomUUID().toString());
         return iAdministratorRepository.save(administrator);
     }
     public static List<Administrator> findAllAdministrator(){return iAdministratorRepository.findAll();}

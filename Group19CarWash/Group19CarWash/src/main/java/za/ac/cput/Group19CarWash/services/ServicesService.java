@@ -16,7 +16,7 @@ public class ServicesService {
     public ServicesService(IServicesRepository iServicesRepository){this.iServicesRepository= iServicesRepository;}
 
     public Services addServices(Services services){
-        services.setServicesId(Long.valueOf(UUID.randomUUID().toString()));
+        services.setServicesId(UUID.randomUUID().toString());
         return iServicesRepository.save(services);
     }
     public static List<Services> findAllServices(){return iServicesRepository.findAll();}
