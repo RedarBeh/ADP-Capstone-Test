@@ -27,7 +27,7 @@ public class Customer implements Serializable {
     @Column
     private String address;
     @Column
-    private int cellnr;
+    private String cellnr;
     @Column
     private String carplate;
 
@@ -82,17 +82,17 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    public int getCellnr() {
+    public String getCellnr() {
         return cellnr;
     }
 
-    public void setCellnr(int cellnr) {
+    public void setCellnr(String cellnr) {
         this.cellnr = cellnr;
     }
 
     public String getCarplate() {return carplate;}
 
-    public void setCellnr(String carplate) {
+    public void setCarplate(String carplate) {
         this.carplate = carplate;
     }
 
@@ -116,7 +116,7 @@ public class Customer implements Serializable {
         private String firstname;
         private String lastname;
         private String address;
-        private int cellnr;
+        private String cellnr;
         private String carplate;
 
         public Builder setId(Long Id){
@@ -144,7 +144,7 @@ public class Customer implements Serializable {
             return this;
         }
 
-        public Builder setCellnr(int cellnr) {
+        public Builder setCellnr(String cellnr) {
             this.cellnr = cellnr;
             return this;
         }

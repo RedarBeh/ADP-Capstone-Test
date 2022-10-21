@@ -37,7 +37,7 @@ public class CustomerNavController {
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.addCustomer(customer);
 
-        return "customer";
+        return "redirect:/new";
     }
 
     @RequestMapping(value= "/editcus/{id}")

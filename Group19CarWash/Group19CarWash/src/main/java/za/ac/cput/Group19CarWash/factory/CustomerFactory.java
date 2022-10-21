@@ -12,7 +12,7 @@ import za.ac.cput.Group19CarWash.util.Helper;
 
 public class CustomerFactory {
 
-    public static Customer createCustomer(String firstname, String lastname, String address, int cellnr, String carplate) {
+    public static Customer createCustomer(String firstname, String lastname, String address, String cellnr, String carplate) {
 
         //String cusId = Helper.generateId();
         Customer customer = new Customer.Builder()
