@@ -25,26 +25,83 @@
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {
         margin-left: 120px;
-
     }
 
-    #gobtn a:link {
-        background-color: #4CAF50;
-        float: right;
-        padding: 10px;
-        text-decoration: none;
+    .gobtn {
+        padding: 10px 10px;
+        font-size: 15px;
+        text_decoration: none;
         cursor: pointer;
-        color: white;
-        display: inline-block;
-        margin-bottom: 30px;
+        outline: none;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+        float: right;
+        margin-bottom: 20px;
+    }
+
+    .gobtn:hover {
+        background-color: aliceblue;
+    }
+
+    .gobtn:active {
+      background-color: dodgerblue;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+    .tformat td, .tformat th {
+
+       padding: 8px;
+    }
+
+    .tformat tr:nth-child(even){
+        background-color: gainsboro;
+    }
+
+    .tformat tr:nth-hover{
+        background-color: #cc6600;
+    }
+
+    .tformat th {
+        text-align: left;
+        background-color: dodgerblue;
+    }
+
+    .ebtn {
+        padding: 5px 9px;
+        font-size: 12px;
+        cursor: pointer;
+        background-color: gold;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+    }
+
+    .dbtn {
+        padding: 5px 9px;
+        font-size: 12px;
+        cursor: pointer;
+        background-color: tomato;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+    }
+
+    .ebtn:hover {
+        background-color: goldenrod;
+    }
+
+    .dbtn:hover {
+        background-color: orangered;
     }
 
     #footer {
-        margin-left: 40%;
+
         left: 0;
         bottom: 0;
-
-        text-align: center;
+]
     }
 
     /* Remove margins from "page content" on small screens */
@@ -53,35 +110,33 @@
     }
 </style>
 </head>
-<body class="w3-black">
+<body>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-blue">
     <!-- Avatar image in top left corner -->
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+    <a href="#" class="w3-bar-item w3-button  w3-hover-light-blue" th:href="@{/}">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/allbookings}">
+    <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/allbookings}">
         <i class="fa fa-address-book w3-xxlarge"></i>
         <p>QUEUE</p>
     </a>
-    <button class="dropdown-btn w3-bar-item w3-button w3-padding-large w3-hover-black w3-hover-black" >
+
+    <button class="dropdown-btn w3-bar-item w3-button w3-hover-light-blue" >
         <i class="fa fa-user-circle w3-xxlarge"></i>
         MANAGE<i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/customer}">
+        <a class="w3-bar-item w3-button w3-light-blue" th:href="@{/customer}">
             <p>MANAGE CUSTOMERS</p>
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/bookings}">
+        <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/bookings}">
             <p>MANAGE BOOKINGS</p>
         </a>
-        <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/customer}">
-            <p>MANAGE SERVICES</p>
-        </a>
     </div>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a class="w3-bar-item w3-button w3-hover-light-blue">
         <i class="fa fa-sign-out w3-xxlarge"></i>
         <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
     </a>
@@ -107,18 +162,18 @@
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
-    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <header class="w3-container w3-padding-32 w3-center" id="home">
         <div>
-        <h2>Manage Customers</h2>
+        <h1>Manage Customers</h1>
         </div>
-        <div id="gobtn">
+        <div class="gobtn">
             <a href="newcus"> Add Customer</a>
         </div>
     </header>
 
     <main>
-        <div align="center">
-            <table border="1" cellpadding="10" border-color="white">
+        <div class="tformat" align="center">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -141,9 +196,9 @@
                         <td th:text="${customer.cellnr}">Phone number</td>
                         <td th:text="${customer.carplate}">Car Registration</td>
                         <td>
-                            <a th:href="@{'/editcus/'+${customer.id}}">Edit</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a th:href="@{'/deletecus/'+${customer.id}}">Delete</a>
+                            <a class="ebtn" th:href="@{'/editcus/'+${customer.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                            <a class="dbtn" th:href="@{'/deletecus/'+${customer.id}}">Delete</a>
                         </td>
                     </tr>
                 </tbody>
