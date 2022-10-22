@@ -10,11 +10,8 @@ package za.ac.cput.Group19CarWash.repository.CarDelivery.impl;
 import za.ac.cput.Group19CarWash.domain.CarDelivery;
 //import za.ac.cput.Group19CarWash.repository.CarDelivery.ICarDeliveryRepository;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.*;
 
-@Repository
 public class CarDeliveryRepositoryIMPL {// } implements ICarDeliveryRepository {
     private static CarDeliveryRepositoryIMPL repository;
     private final List<CarDelivery> deliveries;

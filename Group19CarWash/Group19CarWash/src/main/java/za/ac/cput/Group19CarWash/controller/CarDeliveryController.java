@@ -19,15 +19,15 @@ public class CarDeliveryController {
     @Autowired
     private CarDeliveryService carDeliveryService;
 
-    @GetMapping(value = "/carDeliveries")
+    @GetMapping(value = "/carDelivery")
     public String carDeliveries(Model model) {
         List<CarDelivery> carDeliveryList = CarDeliveryService.findAllCarDeliveries();
         model.addAttribute("carDeliveryList", carDeliveryList);
 
-        return "carDeliveries";
+        return "carDelivery";
     }
 
-    @RequestMapping(value = "/new")
+    @RequestMapping(value = "/newCarDelivery")
     public String showNewCarDelivery(Model model) {
         CarDelivery carDelivery = new CarDelivery();
         model.addAttribute("carDelivery", carDelivery);
@@ -35,14 +35,14 @@ public class CarDeliveryController {
         return "new_carDelivery";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveCarDelivery", method = RequestMethod.POST)
     public String saveCarDelivery(@ModelAttribute("carDelivery") CarDelivery carDelivery) {
         carDeliveryService.addCarDelivery(carDelivery);
 
-        return "redirect:/carDeliveries";
+        return "redirect:/carDelivery";
     }
 
-    @RequestMapping(value = "/edit/{id}")
+    @RequestMapping(value = "/editCarDelivery/{id}")
     public ModelAndView showEditCarDelivery(@PathVariable(name = "id") Long id) {
         ModelAndView editing = new ModelAndView("edit_carDelivery");
         CarDelivery carDelivery = carDeliveryService.findCarDeliveryById(id);
@@ -51,11 +51,11 @@ public class CarDeliveryController {
         return editing;
     }
 
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/deleteCarDelivery/{id}")
     public String deleteMyCarDelivery(@PathVariable(name = "id") Long id) {
         carDeliveryService.deleteCarDelivery(id);
 
-        return "redirect:/carDeliveries";
+        return "redirect:/carDelivery";
     }
 
 }

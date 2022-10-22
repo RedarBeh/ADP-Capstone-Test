@@ -21,7 +21,11 @@ public class CarDelivery implements Serializable {
     @Column
     private String carDelivId;
     @Column
-    private String delivBId;
+    private String date;
+    @Column
+    private String time;
+    // @Column
+    // private String delivBId;
     @Column
     private String customerId;
 
@@ -29,14 +33,22 @@ public class CarDelivery implements Serializable {
     }
 
     // Private constructors
-    public CarDelivery(Long id, String delivBId, String carDelivId, String customerId) {
+    public CarDelivery(Long id, String carDelivId, String date, String time, String customerId) {
         this.id = id;
-        this.delivBId = delivBId;
+        // this.delivBId = delivBId;
         this.carDelivId = carDelivId;
+        this.date = date;
+        this.time = time;
         this.customerId = customerId;
     }
 
     public CarDelivery(Builder builder) {
+        this.id = builder.id;
+
+        this.carDelivId = builder.carDelivId;
+        this.date = builder.date;
+        this.time = builder.time;
+        this.customerId = builder.customerId;
     }
 
     public Long getId() {
@@ -48,12 +60,20 @@ public class CarDelivery implements Serializable {
     }
 
     // Getters and Setters
-    public String getDelivBId() {
-        return this.delivBId;
+    public String getDate() {
+        return date;
     }
 
-    public void setDelivBId(String ID) {
-        this.delivBId = ID;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getCarDelivId() {
@@ -78,8 +98,9 @@ public class CarDelivery implements Serializable {
     public String toString() {
         return "CarDelivery{" +
                 "Id=" + id +
-                ", delivBId='" + delivBId + '\'' +
                 ", carDelivId='" + carDelivId + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 ", customerId='" + customerId + '\'' +
                 '}';
     }
@@ -89,7 +110,9 @@ public class CarDelivery implements Serializable {
         private Long id;
 
         private String carDelivId;
-        private String delivBId;
+        // private String delivBId;
+        private String date;
+        private String time;
         private String customerId;
 
         public Builder setId(Long Id) {
@@ -97,13 +120,13 @@ public class CarDelivery implements Serializable {
             return this;
         }
 
-        public Builder setDelivBId(String ID) {
-            this.delivBId = ID;
+        public Builder setDate(String date) {
+            this.date = date;
             return this;
         }
 
-        public Builder setCarDelivId(String ID) {
-            this.carDelivId = ID;
+        public Builder setTime(String time) {
+            this.time = time;
             return this;
         }
 
@@ -115,8 +138,10 @@ public class CarDelivery implements Serializable {
         public Builder copy(CarDelivery cDelivery) {
             this.id = cDelivery.id;
 
-            this.delivBId = cDelivery.delivBId;
+            // this.delivBId = cDelivery.delivBId;
             this.carDelivId = cDelivery.carDelivId;
+            this.date = cDelivery.date;
+            this.time = cDelivery.time;
             this.customerId = cDelivery.customerId;
             return this;
         }
