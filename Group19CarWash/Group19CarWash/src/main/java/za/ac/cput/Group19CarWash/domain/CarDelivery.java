@@ -2,7 +2,7 @@ package za.ac.cput.Group19CarWash.domain;
 
 /*
     CarDelivery.java
-    Entity for the Upholstery
+    Entity for the Car Delivery
     Mogammad-Redar Behardien 216234107
     10 April 2022
  */
