@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICarDeliveryRepository extends JpaRepository<CarDelivery, String> {
-    public List<CarDelivery> findAll();
+    // public List<CarDelivery> findAll();
 
-    public void deleteCarDeliveryById(Long i);
+    void deleteCarDeliveryById(Long i);
 
     Optional<CarDelivery> findCarDeliveryById(Long i);
 }
