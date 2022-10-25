@@ -2,7 +2,7 @@
 Keallan Saunders 219169357
 ADP3 ASSIGNMENT1
 DD: Oct 2022
-bookings.html
+location.html
 **************** DO NOT TOUCH ********************-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
@@ -14,39 +14,140 @@ bookings.html
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    body, h1,h2,h3,h4,h5,h6 {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {
+        width: 120px;
+        background: #222;
+    }
+
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {
+        margin-left: 120px;
+    }
+
+    .gobtn {
+        padding: 10px 10px;
+        font-size: 15px;
+        text_decoration: none;
+        cursor: pointer;
+        outline: none;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+        float: right;
+        margin-bottom: 20px;
+    }
+
+    .gobtn:hover {
+        background-color: aliceblue;
+    }
+
+    .gobtn:active {
+      background-color: dodgerblue;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+    .tformat td, .tformat th {
+
+       padding: 8px;
+    }
+
+    .tformat tr:nth-child(even){
+        background-color: gainsboro;
+    }
+
+    .tformat tr:nth-hover{
+        background-color: #cc6600;
+    }
+
+    .tformat th {
+        text-align: left;
+        background-color: dodgerblue;
+    }
+
+    .ebtn {
+        padding: 5px 9px;
+        font-size: 12px;
+        cursor: pointer;
+        background-color: gold;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+    }
+
+    .dbtn {
+        padding: 5px 9px;
+        font-size: 12px;
+        cursor: pointer;
+        background-color: tomato;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px #999;
+    }
+
+    .ebtn:hover {
+        background-color: goldenrod;
+    }
+
+    .dbtn:hover {
+        background-color: orangered;
+    }
+
+    #footer{
+
+        left: 0;
+        bottom: 0;
+
+    }
+
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+      #main {margin-left: 0}
+    }
 </style>
 </head>
-<body class="w3-black">
+<body>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-blue">
   <!-- Avatar image in top left corner -->
-  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+  <a href="#" class="w3-bar-item w3-button  w3-hover-light-blue" th:href="@{/}">
     <i class="fa fa-home w3-xxlarge"></i>
     <p>HOME</p>
   </a>
-  <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/bookings}">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>BOOKINGS</p>
+  <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/allbookings}">
+    <i class="fa fa-address-book w3-xxlarge"></i>
+    <p>QUEUE</p>
   </a>
-  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ADD BOOKINGS</p>
+
+  <button class="dropdown-btn w3-bar-item w3-button w3-hover-light-blue" >
+    <i class="fa fa-user-circle w3-xxlarge"></i>
+    MANAGE<i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/customer}">
+      <p>MANAGE CUSTOMERS</p>
+    </a>
+    <a class="w3-bar-item w3-button w3-light-blue" th:href="@{/bookings}">
+      <p>MANAGE BOOKINGS</p>
+    </a>
+  </div>
+  <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/locations}">
+    <i class="fa fa-address-book w3-xxlarge"></i>
+    <p>LOCATIONS</p>
   </a>
-  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ADD LOCATION</p>
-  </a>
-  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
+  <a class="w3-bar-item w3-button w3-hover-light-blue">
+    <i class="fa fa-sign-out w3-xxlarge"></i>
     <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
   </a>
   <!--a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
@@ -72,6 +173,152 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
   <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center" id="home">
+    <div>
+      <h1>Manage Locations</h1>
+    </div>
+    <br>
+    <div class="gobtn">
+      <a href="newlocation"> Add Locations</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="tformat" align="center">
+      <table >
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Branch ID</th>
+          <th>Branch Location</th>
+          <th>Branch Name</th>
+          <th>Branch Cell Number</th>
+          <th>DelivById</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="location : ${locationList}">
+          <td th:text="${location.id}">ID</td>
+          <td th:text="${location.branchId}">BranchID</td>
+          <td th:text="${location.branchLoca}">Branch Location</td>
+          <td th:text="${location.branchName}" >Branch Name</td>
+          <td th:text="${location.branchCellno}">Branch Cell no</td>
+          <td th:text="${location.delivBId}">delivBId</td>
+          <td>
+            <a class="ebtn" th:href="@{'/editLocation/'+${location.id}}">Edit</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="dbtn" th:href="@{'/deleteLocation/'+${location.id}}">Delete</a>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer id="footer" class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
+    <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
+    <!-- End footer -->
+  </footer>
+
+  <!-- END PAGE CONTENT -->
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+<!--DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+</head>
+<body class="w3-black">
+
+< Icon Bar (Sidebar - hidden on small screens) ->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <! Avatar image in top left corner ->
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" th:href="@{/}">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a class="w3-bar-item w3-button w3-padding-large w3-black" th:href="@{/bookings}">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>BOOKINGS</p>
+  </a>
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ADD BOOKINGS</p>
+  </a>
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ADD LOCATION</p>
+  </a>
+  <a class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
+  </a>
+  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-eye w3-xxlarge"></i>
+      <p>PHOTOS</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>CONTACT</p>
+  </a->
+</nav>
+
+<!- Navbar on small screens (Hidden on medium and large screens) ->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a class="w3-bar-item w3-button" style="width:25% " th:href="@{/}">HOME</a>
+    <a class="w3-bar-item w3-button" style="width:25% !important" th:href="@{/bookings}">BOOKINGS</a>
+    <!-a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a->
+  </div>
+</div>
+
+<!- Page Content ->
+<div class="w3-padding-large" id="main">
+  <!- Header/Home ->
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
     <h2>Manage Bookings</h2>
     <br/>
@@ -112,14 +359,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </header>
 
 
-  <!-- Footer -->
+  <!- Footer ->
   <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
     <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
-    <!-- End footer -->
+    <!- End footer ->
   </footer>
 
-  <!-- END PAGE CONTENT -->
+  <!- END PAGE CONTENT ->
 </div>
 
 </body>
-</html>
+</html-->
