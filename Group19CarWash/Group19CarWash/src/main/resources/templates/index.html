@@ -100,15 +100,18 @@ bookings.html
         <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/bookings}">
             <p>MANAGE BOOKINGS</p>
         </a>
+        <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/locations}">
+            <p>MANAGE LOCATIONS</p>
+        </a>
     </div>
     <a class="w3-bar-item w3-button w3-hover-light-blue">
         <i class="fa fa-sign-out w3-xxlarge"></i>
         <p><form th:action="@{/logout}" method="post"><input type="submit" value="Logout" /></form></p>
     </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
+    <!--a class="w3-bar-item w3-button w3-padding-large w3-hover-black" href="new">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>ADD LOCATION</p>
-    </a>
+    </a-->
     <!--a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-eye w3-xxlarge"></i>
         <p>PHOTOS</p>

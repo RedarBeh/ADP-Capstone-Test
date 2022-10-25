@@ -124,7 +124,7 @@ public class Bookings implements Serializable {
             this.id = Id;
             return this;
         }
-        public Builder setBooking(String bookingId){
+        public Builder setBookingId(String bookingId){
             this.bookingId = bookingId;
             return this;
         }

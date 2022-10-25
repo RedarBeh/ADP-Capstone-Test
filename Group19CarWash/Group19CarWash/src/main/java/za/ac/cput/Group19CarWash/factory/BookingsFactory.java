@@ -13,14 +13,14 @@ import java.util.UUID;
 
 
 public class BookingsFactory {
-    public static Bookings createBookings(String date, String time, String branchId, String customerId){
+    public static Bookings createBookings(String bookingId, String date, String time, String branchId, String customerId){
         //Long Id = Helper.generateId();
         //String branchId = Helper.generatebranchId();
         //String customerId = Helper.customerId();
 
 
         Bookings bookings = new Bookings.Builder()
-
+                .setBookingId(bookingId)
                 .setDate(date)
                 .setTime(time)
                 .setBranchId(branchId)

@@ -11,12 +11,13 @@ import za.ac.cput.Group19CarWash.domain.Location;
 import za.ac.cput.Group19CarWash.util.Helper;
 
 public class LocationFactory {
-    public static Location createLocation(String branchName, String branchCellno){
+    public static Location createLocation(String branchName, String branchCellno, String branchId){
         //String branchId = Helper.generatebranchId();
         // String delivBId = Helper.generateDelBId();
 
         Location location = new Location.Builder()
                 .setBranchName(branchName)
+                .setBranchId(branchId)
                 .setBranchCellno(branchCellno)
                 .build();
         return location;
