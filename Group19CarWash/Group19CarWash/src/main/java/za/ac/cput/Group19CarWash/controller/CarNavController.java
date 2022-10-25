@@ -49,7 +49,7 @@ public class CarNavController {
         return editing;
     }
 
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/deletecar/{id}")
     public String deleteCar(@PathVariable(name = "id") Long id){
         carService.deleteCarById(id);
 

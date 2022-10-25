@@ -46,7 +46,7 @@ public class UpholsteryNavController {
         return editing;
     }
 
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/deleteupholstery/{id}")
     public String deleteUpholstery(@PathVariable(name = "id") Long id) {
         upholsteryService.deleteUpholsteryById(id);
 
