@@ -8,16 +8,14 @@ BookingNavController.java
  */package za.ac.cput.Group19CarWash.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import za.ac.cput.Group19CarWash.domain.Bookings;
-import za.ac.cput.Group19CarWash.domain.Customer;
 import za.ac.cput.Group19CarWash.services.BookingService;
-import za.ac.cput.Group19CarWash.services.CustomerService;
+
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -27,8 +25,11 @@ import java.util.List;
 @Controller
 public class BookingNavController {
 
-    @Autowired
-    private BookingService bookingService;
+    private final BookingService bookingService;
+
+    public BookingNavController(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
 
     @GetMapping(value= "/bookings")
     public String bookings(Model model){
