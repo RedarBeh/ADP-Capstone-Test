@@ -1,12 +1,14 @@
 package za.ac.cput.Group19CarWash.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.Group19CarWash.domain.Upholstery;
 import za.ac.cput.Group19CarWash.repository.upholstery.IUpholsteryRepo;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class UpholsteryService {
 
     private static IUpholsteryRepo iUpholsteryRepo;

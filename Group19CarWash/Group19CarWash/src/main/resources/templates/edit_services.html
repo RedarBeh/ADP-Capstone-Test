@@ -7,75 +7,75 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    body, h1,h2,h3,h4,h5,h6 {
-      font-family: "Montserrat", sans-serif
-    }
+    <style>
+        body, h1,h2,h3,h4,h5,h6 {
+            font-family: "Montserrat", sans-serif
+        }
 
-    .w3-row-padding img {
-       margin-bottom: 12px
-    }
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
 
-    /* Set the width of the sidebar to 120px */
-    .w3-sidebar {
-      width: 120px;background: #222;
-    }
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;background: #222;
+        }
 
-    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-    #main {
-      margin-left: 120px;
-    }
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px;
+        }
 
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {
-      #main {margin-left: 0}
-    }
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {margin-left: 0}
+        }
 
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-      width: 35%;
-      padding: 8px;
-      background-color: #87CEEB;
-    }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 35%;
+            padding: 8px;
+            background-color: #87CEEB;
+        }
 
-    .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
 
-    .tform td, .tform th {
-       padding: 8px;
-    }
+        .tform td, .tform th {
+            padding: 8px;
+        }
 
-    .fbtn {
-        padding: 5px 15px;
-        font-size: 15px;
-        text-align: center;
-        cursor: pointer;
-        outline: none;
-        color: black;
-        background-color: aliceblue;
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 5px #999;
-    }
+        .fbtn {
+            padding: 5px 15px;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: black;
+            background-color: aliceblue;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px #999;
+        }
 
-    .fbtn:hover {
-        background-color: dodgerblue;
-    }
+        .fbtn:hover {
+            background-color: dodgerblue;
+        }
 
-    .fbtn:active {
-      background-color: dodgerblue;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-    }
+        .fbtn:active {
+            background-color: dodgerblue;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
 
-    #footer{
-        left: 0;
-        bottom: 0;
-    }
+        #footer{
+            left: 0;
+            bottom: 0;
+        }
 
-</style>
+    </style>
 </head>
 <body>
 
@@ -99,14 +99,8 @@
         <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/customer}">
             <p>MANAGE CUSTOMERS</p>
         </a>
-        <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/bookings}">
+        <a class="w3-bar-item w3-button w3-light-blue" th:href="@{/bookings}">
             <p>MANAGE BOOKINGS</p>
-        </a>
-        <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/locations}">
-            <p>MANAGE LOCATIONS</p>
-        </a>
-        <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/car}">
-            <p>MANAGE CAR</p>
         </a>
     </div>
     <a class="w3-bar-item w3-button w3-hover-light-blue">
@@ -138,35 +132,40 @@
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center" id="home">
         <div>
-            <h1>Create New Customer</h1>
+            <h1>Edit Services</h1>
         </div>
     </header>
 
     <main>
         <div align="center">
             <div class="card">
-                <form action="#" th:action="@{/savecus}" th:object="${customer}" method="post">
+                <form action="#" th:action="@{/saveservices}" th:object="${services}" method="post">
                     <table class="tform">
                         <tr>
-                            <td>Firstname:</td>
-                            <td><input type="text" id="fname" name="fname" required th:field="*{firstname}"/>
+                            <td>Services Package:</td>
+                            <td><input type="text" id="servicespkg" name="servicespkg" required th:field="*{servicePkg}"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>Lastname:</td>
-                            <td><input type="text" id="lname" name="lname" required th:field="*{lastname}"/>
+                            <td>WashType ID<:</td>
+                            <td><input type="text" id="washtypeid" name="washtypeid" required th:field="*{washTypeId}"/>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Address:</td>
-                            <td><input type="text" id="adress" name="adress" required th:field="*{address}"></td>
+                            <td>Upholstery ID:</td>
+                            <td><input type="text" id="upholsteryid" name="upholsteryid" required th:field="*{upholsteryid}"/>
                         </tr>
                         <tr>
-                            <td>Phone number:</td>
-                            <td><input type="tel" id="phone" name="phone" placeholder="eg. +27733459810 " required th:field="*{cellnr}"/></td>
+                            <td>Customer ID:</td>
+                            <td><input type="text" id="customerid" name="customerid" required th:field="*{customerId}"></td>
                         </tr>
                         <tr>
-                            <td>Car Registration:</td>
-                            <td><input type="text" id="carreg" name="carreg" required th:field="*{carplate}"/></td>
+                            <td>Cleaner ID:</td>
+                            <td><input type="tel" id="cleanerid" name="cleanerid" required th:field="*{cleanerId}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Total Amount:</td>
+                            <td><input type="text" id="totalamount" name="totalamount" required th:field="*{totalAmount}"/></td>
                         </tr>
                         <tr>
                             <td colspan="2"><button class="fbtn" type="submit" align="center">Add</button></td>
@@ -183,25 +182,26 @@
         <!-- End footer -->
     </footer>
 
-<!-- END PAGE CONTENT -->
+    <!-- END PAGE CONTENT -->
 </div>
 
 <script>
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
     }
-  });
-}
 </script>
+
 </body>
 </html>

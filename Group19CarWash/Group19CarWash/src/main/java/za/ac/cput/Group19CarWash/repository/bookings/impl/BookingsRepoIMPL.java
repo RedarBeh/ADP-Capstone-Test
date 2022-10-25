@@ -43,9 +43,11 @@ public class BookingsRepoIMPL {
         }
         return null;
     }
-    public void delete(String a){
+    //PUBLIC BOOLEAN RETURN FALSE
+    public boolean delete(String a){
         Bookings bookings = read(a);
         if (bookings != null) this.BookingList.remove(bookings);
+        return false;
     }
 
     public List<Bookings> findAll(){return this.BookingList;}

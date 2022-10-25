@@ -9,47 +9,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     body, h1,h2,h3,h4,h5,h6 {
-      font-family: "Montserrat", sans-serif
+        font-family: "Montserrat", sans-serif
     }
+
     .w3-row-padding img {
-       margin-bottom: 12px;
+        margin-bottom: 12px
     }
+
     /* Set the width of the sidebar to 120px */
     .w3-sidebar {
-      width: 120px;
-      background: #222;
+        width: 120px;
+        background: #222;
     }
+
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
     #main {
-      margin-left: 120px;
-      text-decoration: none;
+        margin-left: 120px;
     }
-
-    #userpos {
-        text-align: right;
-    }
-
-    #footer{
-        margin-left: 20%;
-        left: 0;
-        bottom: 0;
-        align: center;
-    }
-
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {
-      #main {margin-left: 0}
-    }
-    .dropdown-container {
-        display: none;
-    }
-
-    .fa-caret-down {
-        float: right;
-        padding-right: 3px;
-    }
-
-
 
     .gobtn {
         padding: 10px 10px;
@@ -64,8 +40,6 @@
         float: right;
         margin-bottom: 20px;
     }
-
-
 
     .gobtn:hover {
         background-color: aliceblue;
@@ -122,8 +96,18 @@
     .dbtn:hover {
         background-color: orangered;
     }
-}
 
+    #footer {
+
+        left: 0;
+        bottom: 0;
+]
+    }
+
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {
+      #main {margin-left: 0}
+    }
 </style>
 </head>
 <body>
@@ -135,7 +119,7 @@
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a class="w3-bar-item w3-button w3-light-blue" th:href="@{/allbookings}">
+    <a class="w3-bar-item w3-button w3-hover-light-blue" th:href="@{/allbookings}">
         <i class="fa fa-address-book w3-xxlarge"></i>
         <p>QUEUE</p>
     </a>
@@ -172,7 +156,6 @@
     </a-->
 </nav>
 
-
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
@@ -185,92 +168,54 @@
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
-    <!-- Header/Home -->
-    <header class="w3-container w3-center" id="home">
+    <header class="w3-container w3-padding-32 w3-center" id="home">
         <div>
-            <h2 class="w3-jumbo">Queue</h2>
+            <h1>Manage Cars</h1>
         </div>
-        <br>
         <div class="gobtn">
-            <a href="newcus"> Add Booking</a>
+            <a href="newcar"> Add Car</a>
         </div>
     </header>
 
     <main>
-        <div class="tformat" align="left">
+        <div class="tformat" align="center">
             <table>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>CustomerID</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Address</th>
-                    <th>Phone number</th>
-                    <th>Car Registration</th>
+                    <th>CarRegId</th>
+                    <th>CarModel</th>
+                    <th>CarColour</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="customer : ${customerList}">
-                    <td th:text="${customer.id}">ID</td>
-                    <td th:text="${customer.cusId}">CustomerID</td>
-                    <td th:text="${customer.firstname}">Firstname</td>
-                    <td th:text="${customer.lastname}" >Lastname</td>
-                    <td th:text="${customer.address}">Address</td>
-                    <td th:text="${customer.cellnr}">Phone number</td>
-                    <td th:text="${customer.carplate}">Car Registration</td>
+                <tr th:each="car : ${carList}">
+                    <td th:text="${car.id}">ID</td>
+                    <td th:text="${car.carRegId}">CarRegId</td>
+                    <td th:text="${car.carModel}">CarModel</td>
+                    <td th:text="${car.carColour}" >CarColour</td>
                     <td>
-                        <a class="ebtn" th:href="@{'/editcus/'+${customer.id}}">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="dbtn" th:href="@{'/deletecus/'+${customer.id}}">Delete</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        <br>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>BookingID</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>BranchID</th>
-                    <th>CustomerID</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="bookings : ${bookingsList}">
-                    <td th:text="${bookings.id}">ID</td>
-                    <td th:text="${bookings.bookingId}">BookingID</td>
-                    <td th:text="${bookings.date}">Date</td>
-                    <td th:text="${bookings.time}" >Time</td>
-                    <td th:text="${bookings.branchId}">BranchID</td>
-                    <td th:text="${bookings.customerId}">CustomerID</td>
-                    <td>
-                        <a class="ebtn" th:href="@{'/edit/'+${bookings.id}}">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="dbtn" th:href="@{'/delete/'+${bookings.id}}">Delete</a>
-
+                        <a class="ebtn" th:href="@{'/editcar/'+${car.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                        <a class="dbtn" th:href="@{'/deletecar/'+${car.id}}">Delete</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </main>
-</div>
 
-<div>
     <!-- Footer -->
-    <footer id="footer" class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
-        <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
-        <!-- End footer -->
-    </footer>
-</div>
-    <!-- END PAGE CONTENT -->
+    <div id="footer">
+        <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge" align="center">
+            <p class="w3-medium"> @Copyright Group19CapStone @2022 All Right Reserved.</p>
+            <!-- End footer -->
+        </footer>
+    </div>
 
+    <!-- END PAGE CONTENT -->
+</div>
 
 <script>
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
