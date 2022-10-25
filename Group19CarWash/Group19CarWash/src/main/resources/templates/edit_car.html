@@ -1,9 +1,3 @@
-<!--
-Keallan Saunders 219169357
-ADP3 ASSIGNMENT1
-DD: Oct 2022
-new_location.html
-**************** DO NOT TOUCH ********************-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -143,71 +137,30 @@ new_location.html
 <div class="w3-padding-large" id="main">
     <!-- Header/Home -->
     <header class="w3-container w3-padding-32 w3-center" id="home">
-        <div align="center">
-            <h1>Create New Location</h1>
+        <div>
+            <h1>Edit Car</h1>
         </div>
     </header>
 
     <main>
         <div align="center">
             <div class="card">
-                <form action="#" th:action="@{/saveLocation}" th:object="${location}" method="post">
+                <form action="#" th:action="@{/savecar}" th:object="${car}" method="post">
                     <table class="tform">
                         <tr>
-                            <td>Branch ID:</td>
-                            <td>
-                            <div class="custom-select" style="width:200px;">
-                                <select th:field="*{branchId}">
-                                    <option value="0">Select Branch:   </option>
-                                    <option value="47001">47001</option>
-                                    <option value="3800">3800</option>
-                                    <option value="5200">5200</option>
-                                    <option value="6400">6400</option>
-                                </select>
-                            </div>
-                            </td>
-                            <!--td><input type="text" id="dt1" name="dt1" th:field="*{branchId}"/>
-                            </td-->
-                        </tr>
-                        <tr>
-                            <td>Branch Location:</td>
-                            <td>
-                                <div class="custom-select" style="width:200px;">
-                                    <select th:field="*{branchLoca}">
-                                        <option value="0">Select Branch:   </option>
-                                        <option value="Bellville">Bellville</option>
-                                        <option value="Retreat">Retreat</option>
-                                        <option value="Wynberg">Wynberg</option>
-                                        <option value="Tokai">Tokai</option>
-                                    </select>
-                                </div>
-                                <!--input type="text" id="appt" name="appt"
-                                        required th:field="*{branchLoca}"/-->
+                            <td>Car Model:</td>
+                            <td><input type="text" id="carM" name="carMod" required th:field="*{carModel}"/>
                             </td>
                         </tr>
                         <tr>
-                            <td>Branch Name:</td>
-                            <td>
-                                <input type="text" id="appt1" name="appt"
-                                       required th:field="*{branchName}"/>
-                            </td>
+                            <td>Car Colour:</td>
+                            <td><input type="text" id="carC" name="carCol" required th:field="*{carColour}"/>
                         </tr>
                         <tr>
-                            <td>Branch Cell Number:</td>
-                            <td>
-                                <input type="tel" th:field="*{branchCellno}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>DelivBID:</td>
-                            <td>
-                                <input type="text" th:field="*{delivBId}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><button class="fbtn" type="submit" align="center">Save</button></td>
+                            <td colspan="2"><button class="fbtn" type="submit" align="center">Add</button></td>
                         </tr>
                     </table>
+
                 </form>
             </div>
         </div>
