@@ -4,7 +4,6 @@ package za.ac.cput.Group19CarWash.services;
   PaymentService.java
   Service for the Payment
   Lyle Haines (217245919)
-  10 April 2022
  */
 
 import org.springframework.beans.factory.annotation.Autowired;

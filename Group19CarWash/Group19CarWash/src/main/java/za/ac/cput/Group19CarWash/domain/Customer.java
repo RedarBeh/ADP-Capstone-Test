@@ -4,7 +4,6 @@ package za.ac.cput.Group19CarWash.domain;
   Customer.java
   Entity for the Customer
   Lyle Haines (217245919)
-  10 April 2022
  */
 
 import javax.persistence.*;

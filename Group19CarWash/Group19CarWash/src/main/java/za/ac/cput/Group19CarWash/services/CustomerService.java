@@ -4,7 +4,6 @@ package za.ac.cput.Group19CarWash.services;
   CustomerService.java
   Service for the Customer
   Lyle Haines (217245919)
-  10 April 2022
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
