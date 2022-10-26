@@ -4,7 +4,6 @@ package za.ac.cput.Group19CarWash.repository.payment.impl;
   PaymentRepository.java
   Repository for the Payment
   Lyle Haines (217245919)
-  10 April 2022
  */
 
 import za.ac.cput.Group19CarWash.domain.Payment;

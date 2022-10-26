@@ -1,3 +1,9 @@
+/*
+  CustomerNavController.java
+  Controller for the Customer
+  Lyle Haines (217245919)
+ */
+
 package za.ac.cput.Group19CarWash.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;

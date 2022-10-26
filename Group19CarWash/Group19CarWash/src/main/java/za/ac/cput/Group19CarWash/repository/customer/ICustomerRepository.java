@@ -4,7 +4,6 @@ package za.ac.cput.Group19CarWash.repository.customer;
   ICustomerRepository.java
   IRepository for the Customer
   Lyle Haines (217245919)
-  10 April 2022
  */
 
 import org.springframework.data.jpa.repository.JpaRepository;
