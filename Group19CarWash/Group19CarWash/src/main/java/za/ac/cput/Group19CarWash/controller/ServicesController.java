@@ -1,14 +1,18 @@
 package za.ac.cput.Group19CarWash.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import za.ac.cput.Group19CarWash.domain.Services;
 import za.ac.cput.Group19CarWash.services.ServicesService;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
+@Controller
 public class ServicesController {
 
     @Autowired
@@ -40,7 +44,7 @@ public class ServicesController {
     }
     @RequestMapping(value = "/deleteservices/{id}")
     public String deleteservices(@PathVariable(name = "id")Long id) {
-        servicesService.deleteServicesrById(id);
+        servicesService.deleteServicesById(id);
         return "redirect:/services";
     }
 

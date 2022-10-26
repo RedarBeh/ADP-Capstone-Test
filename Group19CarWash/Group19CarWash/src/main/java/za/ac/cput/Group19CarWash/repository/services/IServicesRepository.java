@@ -5,10 +5,10 @@ import za.ac.cput.Group19CarWash.domain.Services;
 
 import java.util.Optional;
 
-public interface IServicesRepository extends JpaRepository<Services, String> {
+public interface IServicesRepository extends JpaRepository<Services, Long> {
 
-    void deleteServicesById(String servicesId);
+    void deleteServicesById(Long Id);
 
-    Optional<Services> findServicesById(String servicesId);
+    Optional<Services> findServicesById(Long Id);
 }
 
