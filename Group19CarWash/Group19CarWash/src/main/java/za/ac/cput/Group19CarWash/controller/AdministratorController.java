@@ -1,14 +1,18 @@
 package za.ac.cput.Group19CarWash.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import za.ac.cput.Group19CarWash.domain.Administrator;
 import za.ac.cput.Group19CarWash.services.AdministratorService;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
+@Controller
 public class AdministratorController {
 
     @Autowired
